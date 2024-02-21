@@ -1,0 +1,8 @@
+﻿{
+  "profiles": {
+    "NethereumGenerator.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "generate from-abi -cn StandardContract -abi ..\\..\\..\\sample\\StandardContract.abi -bin ..\\..\\..\\sample\\StandardContract.bin -o c:\\Temp\\ -ns Sample.Ethereum"
+    }
+  }
+}
