@@ -1,17 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="AllMessages\CSharp\**" />
-    <Compile Remove="AllMessages\FSharp\**" />
-    <Compile Remove="AllMessages\Vb\**" />
-    <EmbeddedResource Remove="AllMessages\CSharp\**" />
-    <EmbeddedResource Remove="AllMessages\FSharp\**" />
-    <EmbeddedResource Remove="AllMessages\Vb\**" />
-    <None Remove="AllMessages\CSharp\**" />
-    <None Remove="AllMessages\FSharp\**" />
-    <None Remove="AllMessages\Vb\**" />
-  </ItemGroup>
-
+	<Import Project="..\..\buildConf\.props" />
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<Folder Include="AllMessages\CSharp\" />
+		<Folder Include="AllMessages\FSharp\" />
+		<Folder Include="AllMessages\Vb\" />
+	</ItemGroup>
 </Project>
