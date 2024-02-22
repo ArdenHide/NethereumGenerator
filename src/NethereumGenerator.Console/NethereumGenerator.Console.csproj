@@ -13,8 +13,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.0.4" />
-    <PackageReference Include="Nethereum.Generators" Version="4.12.0" />
-    <PackageReference Include="Nethereum.Generators.Net" Version="4.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NethereumGenerators.Net\NethereumGenerators.Net.csproj" />
+    <ProjectReference Include="..\NethereumGenerators\NethereumGenerators.csproj" />
   </ItemGroup>
 
 </Project>

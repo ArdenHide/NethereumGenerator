@@ -5,6 +5,10 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NethereumGenerator.Console", "src\NethereumGenerator.Console\NethereumGenerator.Console.csproj", "{91288FEB-78BE-41EC-95F4-6A1BCF6A7D7D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NethereumGenerators", "src\NethereumGenerators\NethereumGenerators.csproj", "{8B45B7EB-E048-419D-A999-4782900286E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NethereumGenerators.Net", "src\NethereumGenerators.Net\NethereumGenerators.Net.csproj", "{A2889FB4-C3EF-455B-B604-630AEE7FF50C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{91288FEB-78BE-41EC-95F4-6A1BCF6A7D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91288FEB-78BE-41EC-95F4-6A1BCF6A7D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91288FEB-78BE-41EC-95F4-6A1BCF6A7D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B45B7EB-E048-419D-A999-4782900286E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B45B7EB-E048-419D-A999-4782900286E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B45B7EB-E048-419D-A999-4782900286E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B45B7EB-E048-419D-A999-4782900286E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2889FB4-C3EF-455B-B604-630AEE7FF50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2889FB4-C3EF-455B-B604-630AEE7FF50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2889FB4-C3EF-455B-B604-630AEE7FF50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2889FB4-C3EF-455B-B604-630AEE7FF50C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
