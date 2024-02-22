@@ -21,7 +21,7 @@ namespace Nethereum.Generators.Service
 {SpaceUtils.OneTab}{{
 {_deploymentServiceMethodsCSharpTemplate.GenerateMethods()}
 {SpaceUtils.NoTabs}
-{SpaceUtils.TwoTabs}protected virtual Nethereum.Web3.IWeb3 Web3{{ get; }}
+{SpaceUtils.TwoTabs}protected virtual Nethereum.Web3.IWeb3 Web3 {{ get; }}
 {SpaceUtils.NoTabs}
 {SpaceUtils.TwoTabs}public virtual ContractHandler ContractHandler {{ get; }}
 {SpaceUtils.NoTabs}

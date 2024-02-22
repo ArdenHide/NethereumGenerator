@@ -81,7 +81,7 @@ $@"{SpaceUtils.TwoTabs}public virtual Task<{functionOutputDTOType}> {functionNam
                     var type = functionABIModel.GetSingleOutputReturnType();
 
                     var returnWithInputParam =
-                        $@"{SpaceUtils.TwoTabs}public virtual <{type}> {functionNameUpper}QueryAsync({messageType} {messageVariableName}, BlockParameter blockParameter = null)
+                        $@"{SpaceUtils.TwoTabs}public virtual Task<{type}> {functionNameUpper}QueryAsync({messageType} {messageVariableName}, BlockParameter blockParameter = null)
 {SpaceUtils.TwoTabs}{{
 {SpaceUtils.ThreeTabs}return ContractHandler.QueryAsync<{messageType}, {type}>({messageVariableName}, blockParameter);
 {SpaceUtils.TwoTabs}}}";
