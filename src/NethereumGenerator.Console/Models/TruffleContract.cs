@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace NethereumGenerator.Console.Models
+namespace NethereumGenerator.ExtendedConsole.Models
 {
     public class TruffleContract
     {

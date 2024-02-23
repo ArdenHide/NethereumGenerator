@@ -6,7 +6,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NethereumGenerator.Console.Configuration
+namespace NethereumGenerator.ExtendedConsole.Configuration
 {
     public class ABICollectionConfiguration
     {

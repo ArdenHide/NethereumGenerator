@@ -1,10 +1,10 @@
 ﻿using Nethereum.Generators.Core;
 using Nethereum.Generators.Net;
 using Nethereum.Generators;
-using NethereumGenerator.Console.Configuration;
+using NethereumGenerator.ExtendedConsole.Configuration;
 using System.Collections.Generic;
 
-namespace NethereumGenerator.Console.Generation
+namespace NethereumGenerator.ExtendedConsole.Generation
 {
     public class CodeGenerationWrapper : ICodeGenerationWrapper
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.CommandLineUtils;
 
-namespace NethereumGenerator.Console.Commands
+namespace NethereumGenerator.ExtendedConsole.Commands
 {
     public static class Extensions
     {

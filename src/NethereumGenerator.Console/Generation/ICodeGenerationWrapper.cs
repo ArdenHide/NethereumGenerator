@@ -1,4 +1,4 @@
-﻿namespace NethereumGenerator.Console.Generation
+﻿namespace NethereumGenerator.ExtendedConsole.Generation
 {
     public interface ICodeGenerationWrapper
     {

@@ -1,7 +1,7 @@
 ﻿using Nethereum.Generators.Model;
 using Nethereum.Generators.Net;
 
-namespace NethereumGenerator.Console.Models
+namespace NethereumGenerator.ExtendedConsole.Models
 {
     public class ContractDefinition
     {

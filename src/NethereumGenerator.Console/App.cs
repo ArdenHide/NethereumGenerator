@@ -1,7 +1,7 @@
-﻿using NethereumGenerator.Console.Commands;
+﻿using NethereumGenerator.ExtendedConsole.Commands;
 using Microsoft.Extensions.CommandLineUtils;
 
-namespace NethereumGenerator.Console
+namespace NethereumGenerator.ExtendedConsole
 {
     public class App : CommandLineApplication
     {

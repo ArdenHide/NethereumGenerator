@@ -4,7 +4,7 @@ using Nethereum.Generators;
 using System.IO;
 using System;
 
-namespace NethereumGenerator.Console.Configuration
+namespace NethereumGenerator.ExtendedConsole.Configuration
 {
     public class ABIConfiguration
     {

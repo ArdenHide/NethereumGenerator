@@ -1,4 +1,4 @@
-﻿namespace NethereumGenerator.Console.Configuration
+﻿namespace NethereumGenerator.ExtendedConsole.Configuration
 {
     public static class GeneratorConfigurationConstants
     {

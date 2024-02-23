@@ -4,9 +4,9 @@ using Nethereum.Generators;
 using System.Collections.Generic;
 using System.IO;
 using System;
-using NethereumGenerator.Console.Models;
+using NethereumGenerator.ExtendedConsole.Models;
 
-namespace NethereumGenerator.Console.Configuration
+namespace NethereumGenerator.ExtendedConsole.Configuration
 {
     /// <summary>
     /// Responsible from retrieving code generator configuration and setting default values
