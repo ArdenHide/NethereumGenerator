@@ -2,6 +2,7 @@
 	<Import Project="..\..\buildConf\.props" />
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
+		<PackageId>NethereumGenerator</PackageId>
 	</PropertyGroup>
 	<ItemGroup>
 		<Folder Include="AllMessages\CSharp\" />
