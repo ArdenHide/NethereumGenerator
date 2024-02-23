@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.CommandLineUtils;
-using NethereumGenerator.Console.Generation;
+using NethereumGenerator.ExtendedConsole.Generation;
 using System;
 
-namespace NethereumGenerator.Console.Commands
+namespace NethereumGenerator.ExtendedConsole.Commands
 {
     public class GenerateFromAbiCommand : CommandLineApplication
     {

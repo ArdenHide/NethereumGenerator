@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace NethereumGenerator.Console.Configuration
+namespace NethereumGenerator.ExtendedConsole.Configuration
 {
     public static class GeneratorConfigurationUtils
     {

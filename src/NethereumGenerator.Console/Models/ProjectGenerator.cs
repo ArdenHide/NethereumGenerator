@@ -3,7 +3,7 @@ using Nethereum.Generators;
 using System.Collections.Generic;
 using System.IO;
 
-namespace NethereumGenerator.Console.Models
+namespace NethereumGenerator.ExtendedConsole.Models
 {
     public class ProjectGenerator
     {

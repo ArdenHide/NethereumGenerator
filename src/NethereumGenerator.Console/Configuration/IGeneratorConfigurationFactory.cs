@@ -2,7 +2,7 @@
 using Nethereum.Generators;
 using System.Collections.Generic;
 
-namespace NethereumGenerator.Console.Configuration
+namespace NethereumGenerator.ExtendedConsole.Configuration
 {
     public interface IGeneratorConfigurationFactory
     {

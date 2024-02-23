@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NethereumGenerator.Console
+namespace NethereumGenerator.ExtendedConsole
 {
     class Program
     {

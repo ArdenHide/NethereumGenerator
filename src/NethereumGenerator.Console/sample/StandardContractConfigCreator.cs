@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using NethereumGenerator.Console.Configuration;
+using NethereumGenerator.ExtendedConsole.Configuration;
 
-namespace NethereumGenerator.Console.sample
+namespace NethereumGenerator.ExtendedConsole.sample
 {
     public class StandardContractConfigCreator
     {

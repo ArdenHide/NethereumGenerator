@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NethereumGenerator.Console", "src\NethereumGenerator.Console\NethereumGenerator.Console.csproj", "{91288FEB-78BE-41EC-95F4-6A1BCF6A7D7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NethereumGenerator.ExtendedConsole", "src\NethereumGenerator.Console\NethereumGenerator.ExtendedConsole.csproj", "{91288FEB-78BE-41EC-95F4-6A1BCF6A7D7D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NethereumGenerators", "src\NethereumGenerators\NethereumGenerators.csproj", "{8B45B7EB-E048-419D-A999-4782900286E1}"
 EndProject

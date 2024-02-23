@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.CommandLineUtils;
-using NethereumGenerator.Console.Generation;
+using NethereumGenerator.ExtendedConsole.Generation;
 using System;
 using System.IO;
 using System.Linq;
 
-namespace NethereumGenerator.Console.Commands
+namespace NethereumGenerator.ExtendedConsole.Commands
 {
     public class GenerateFromProjectCommand : CommandLineApplication
     {
