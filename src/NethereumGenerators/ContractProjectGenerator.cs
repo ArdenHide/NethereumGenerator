@@ -4,6 +4,7 @@ using Nethereum.Generators.DTOs;
 using Nethereum.Generators.Model;
 using Nethereum.Generators.Service;
 using Nethereum.Generators.Unity;
+using NethereumGenerators.Deploy;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -63,6 +64,7 @@ namespace Nethereum.Generators
             generated.Add(GenerateAllMessages());
             generated.AddRange(GenerateAllStructs());
             generated.Add(GenerateService(singleMessagesFile:true));
+            generated.Add(GenerateDeployService(singleMessagesFile:true));
             return generated.ToArray();
         }
 
@@ -90,7 +92,22 @@ namespace Nethereum.Generators
             generated.AddRange(GenerateAllErrorDTOs());
             generated.AddRange(GenerateAllFunctionDTOs());
             generated.Add(GenerateService());
+            generated.Add(GenerateDeployService());
             return generated.ToArray();
+        }
+
+        public GeneratedFile GenerateDeployService(bool singleMessagesFile = false)
+        {
+            var dtoFullNamespace = GetFullNamespace(DTONamespace);
+            var cqsFullNamespace = GetFullNamespace(CQSNamespace);
+
+            dtoFullNamespace = singleMessagesFile ? string.Empty : FullyQualifyNamespaceFromImport(dtoFullNamespace);
+            cqsFullNamespace = FullyQualifyNamespaceFromImport(cqsFullNamespace);
+
+            var serviceFullNamespace = GetFullNamespace(ServiceNamespace);
+            var serviceFullPath = GetFullPath(ServiceNamespace);
+            var serviceGenerator = new DeployGenerator(ContractABI, ContractName, ByteCode, serviceFullNamespace, cqsFullNamespace, dtoFullNamespace, CodeGenLanguage);
+            return serviceGenerator.GenerateFileContent(serviceFullPath);
         }
 
         public GeneratedFile GenerateService(bool singleMessagesFile = false)

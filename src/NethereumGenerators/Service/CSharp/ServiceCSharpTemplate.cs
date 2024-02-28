@@ -6,11 +6,9 @@ namespace Nethereum.Generators.Service
     public class ServiceCSharpTemplate: ClassTemplateBase<ServiceModel>
     {
         private FunctionServiceMethodCSharpTemplate _functionServiceMethodCSharpTemplate;
-        private ContractDeploymentServiceMethodsCSharpTemplate _deploymentServiceMethodsCSharpTemplate;
         public ServiceCSharpTemplate(ServiceModel model):base(model)
         {
             _functionServiceMethodCSharpTemplate = new FunctionServiceMethodCSharpTemplate(model);
-            _deploymentServiceMethodsCSharpTemplate = new ContractDeploymentServiceMethodsCSharpTemplate(model);
             ClassFileTemplate = new CSharpClassFileTemplate(Model, this);
         }
 
@@ -19,7 +17,6 @@ namespace Nethereum.Generators.Service
             return
                 $@"{SpaceUtils.OneTab}public partial class {Model.GetTypeName()}
 {SpaceUtils.OneTab}{{
-{_deploymentServiceMethodsCSharpTemplate.GenerateMethods()}
 {SpaceUtils.NoTabs}
 {SpaceUtils.TwoTabs}protected virtual Nethereum.Web3.IWeb3 Web3 {{ get; }}
 {SpaceUtils.NoTabs}
