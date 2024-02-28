@@ -34,11 +34,12 @@ namespace NethereumGenerators.Deploy.CSharp
 {SpaceUtils.ThreeTabs}return web3.Eth.GetContractDeploymentHandler<{messageType}>().SendRequestAsync({messageVariableName});
 {SpaceUtils.TwoTabs}}}";
 
+            var contractServiceTypeName = _serviceModel.GetTypeName().Replace("Deploying", "");
             var sendRequestContract =
-                $@"{SpaceUtils.TwoTabs}public virtual async Task<{_serviceModel.GetTypeName()}> DeployContractAndGetServiceAsync(Nethereum.Web3.IWeb3 web3, {messageType} {messageVariableName}, CancellationTokenSource cancellationTokenSource = null)
+                $@"{SpaceUtils.TwoTabs}public virtual async Task<{contractServiceTypeName}> DeployContractAndGetServiceAsync(Nethereum.Web3.IWeb3 web3, {messageType} {messageVariableName}, CancellationTokenSource cancellationTokenSource = null)
 {SpaceUtils.TwoTabs}{{
 {SpaceUtils.ThreeTabs}var receipt = await DeployContractAndWaitForReceiptAsync(web3, {messageVariableName}, cancellationTokenSource);
-{SpaceUtils.ThreeTabs}return new {_serviceModel.GetTypeName().Replace("Deploying", "")}(web3, receipt.ContractAddress);
+{SpaceUtils.ThreeTabs}return new {contractServiceTypeName}(web3, receipt.ContractAddress);
 {SpaceUtils.TwoTabs}}}";
 
             return string.Join(SpaceFollowingFunction, sendRequestReceipt, sendRequest, sendRequestContract);

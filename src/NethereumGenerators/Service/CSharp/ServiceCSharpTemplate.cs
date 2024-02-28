@@ -17,7 +17,6 @@ namespace Nethereum.Generators.Service
             return
                 $@"{SpaceUtils.OneTab}public partial class {Model.GetTypeName()}
 {SpaceUtils.OneTab}{{
-{SpaceUtils.NoTabs}
 {SpaceUtils.TwoTabs}protected virtual Nethereum.Web3.IWeb3 Web3 {{ get; }}
 {SpaceUtils.NoTabs}
 {SpaceUtils.TwoTabs}public virtual ContractHandler ContractHandler {{ get; }}
