@@ -1,11 +1,11 @@
-﻿using Nethereum.Generators.Core;
+using System;﻿
+using Nethereum.Generators.Core;
 using Nethereum.Generators.CQS;
 using Nethereum.Generators.DTOs;
 using Nethereum.Generators.Model;
 using Nethereum.Generators.Service;
 using Nethereum.Generators.Unity;
 using NethereumGenerators.Deploy;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
