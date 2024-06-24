@@ -7,7 +7,6 @@ using Nethereum.Generators.Model;
 
 namespace Nethereum.Generators.Service
 {
-
     public class FunctionServiceMethodCSharpTemplate
     {
         private readonly ServiceModel _model;
@@ -46,21 +45,24 @@ namespace Nethereum.Generators.Service
                 var returnWithInputParam =
 $@"{SpaceUtils.TwoTabs}public virtual Task<{functionOutputDTOType}> {functionNameUpper}QueryAsync({messageType} {messageVariableName}, BlockParameter blockParameter = null)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}return ContractHandler.QueryDeserializingToObjectAsync<{messageType}, {functionOutputDTOType}>({messageVariableName}, blockParameter);
 {SpaceUtils.TwoTabs}}}";
 
                 var returnWithoutInputParam =
 $@"{SpaceUtils.TwoTabs}public virtual Task<{functionOutputDTOType}> {functionNameUpper}QueryAsync(BlockParameter blockParameter = null)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}return ContractHandler.QueryDeserializingToObjectAsync<{messageType}, {functionOutputDTOType}>(null, blockParameter);
 {SpaceUtils.TwoTabs}}}";
 
                 var returnWithSimpleParams =
 $@"{SpaceUtils.TwoTabs}public virtual Task<{functionOutputDTOType}> {functionNameUpper}QueryAsync({_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)}, BlockParameter blockParameter = null)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}var {messageVariableName} = new {messageType}();
 {_parameterAbiFunctionDtocSharpTemplate.GenerateAssigmentFunctionParametersToProperties(functionABIModel.FunctionABI.InputParameters, messageVariableName, SpaceUtils.FourTabs)}
 {SpaceUtils.ThreeTabs}
@@ -86,21 +88,24 @@ $@"{SpaceUtils.TwoTabs}public virtual Task<{functionOutputDTOType}> {functionNam
                     var returnWithInputParam =
                         $@"{SpaceUtils.TwoTabs}public virtual Task<{type}> {functionNameUpper}QueryAsync({messageType} {messageVariableName}, BlockParameter blockParameter = null)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}return ContractHandler.QueryAsync<{messageType}, {type}>({messageVariableName}, blockParameter);
 {SpaceUtils.TwoTabs}}}";
 
                     var returnWithoutInputParam =
                         $@"{SpaceUtils.TwoTabs}public virtual Task<{type}> {functionNameUpper}QueryAsync(BlockParameter blockParameter = null)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}return ContractHandler.QueryAsync<{messageType}, {type}>(null, blockParameter);
 {SpaceUtils.TwoTabs}}}";
 
                     var returnWithSimpleParams =
                         $@"{SpaceUtils.TwoTabs}public virtual Task<{type}> {functionNameUpper}QueryAsync({_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)}, BlockParameter blockParameter = null)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}var {messageVariableName} = new {messageType}();
 {_parameterAbiFunctionDtocSharpTemplate.GenerateAssigmentFunctionParametersToProperties(functionABIModel.FunctionABI.InputParameters, messageVariableName, SpaceUtils.FourTabs)}
 {SpaceUtils.ThreeTabs}
@@ -123,21 +128,24 @@ $@"{SpaceUtils.TwoTabs}public virtual Task<{functionOutputDTOType}> {functionNam
                 var transactionRequestWithInput =
                     $@"{SpaceUtils.TwoTabs}public virtual Task<string> {functionNameUpper}RequestAsync({messageType} {messageVariableName})
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}return ContractHandler.SendRequestAsync({messageVariableName});
 {SpaceUtils.TwoTabs}}}";
 
                 var transactionRequestWithoutInput =
                     $@"{SpaceUtils.TwoTabs}public virtual Task<string> {functionNameUpper}RequestAsync()
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}return ContractHandler.SendRequestAsync<{messageType}>();
 {SpaceUtils.TwoTabs}}}";
 
                 var transactionRequestWithSimpleParams =
                     $@"{SpaceUtils.TwoTabs}public virtual Task<string> {functionNameUpper}RequestAsync({_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)})
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}var {messageVariableName} = new {messageType}();
 {_parameterAbiFunctionDtocSharpTemplate.GenerateAssigmentFunctionParametersToProperties(functionABIModel.FunctionABI.InputParameters, messageVariableName, SpaceUtils.FourTabs)}
 {SpaceUtils.ThreeTabs}
@@ -147,21 +155,24 @@ $@"{SpaceUtils.TwoTabs}public virtual Task<{functionOutputDTOType}> {functionNam
                 var transactionRequestAndReceiptWithInput =
                     $@"{SpaceUtils.TwoTabs}public virtual Task<TransactionReceipt> {functionNameUpper}RequestAndWaitForReceiptAsync({messageType} {messageVariableName}, CancellationTokenSource cancellationToken = null)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}return ContractHandler.SendRequestAndWaitForReceiptAsync({messageVariableName}, cancellationToken);
 {SpaceUtils.TwoTabs}}}";
 
                 var transactionRequestAndReceiptWithoutInput =
                     $@"{SpaceUtils.TwoTabs}public virtual Task<TransactionReceipt> {functionNameUpper}RequestAndWaitForReceiptAsync(CancellationTokenSource cancellationToken = null)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}return ContractHandler.SendRequestAndWaitForReceiptAsync<{messageType}>(null, cancellationToken);
 {SpaceUtils.TwoTabs}}}";
 
                 var transactionRequestAndReceiptWithSimpleParams =
                     $@"{SpaceUtils.TwoTabs}public virtual Task<TransactionReceipt> {functionNameUpper}RequestAndWaitForReceiptAsync({_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)}, CancellationTokenSource cancellationToken = null)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}EnsureInitialized();
+{SpaceUtils.ThreeTabs}Web3.ThrowIfNull();
+{SpaceUtils.ThreeTabs}ContractHandler.ThrowIfNull();
 {SpaceUtils.ThreeTabs}var {messageVariableName} = new {messageType}();
 {_parameterAbiFunctionDtocSharpTemplate.GenerateAssigmentFunctionParametersToProperties(functionABIModel.FunctionABI.InputParameters, messageVariableName, SpaceUtils.FourTabs)}
 {SpaceUtils.ThreeTabs}
