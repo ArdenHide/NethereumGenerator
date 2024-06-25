@@ -14,7 +14,7 @@ namespace Nethereum.Generators.ServiceInterface
         public ServiceInterfaceModel(ContractABI contractABI, string contractName, 
                             string byteCode, string @namespace, 
                             string cqsNamespace, string functionOutputNamespace):
-            base(@namespace, contractName, "Service")
+            base(@namespace, $"I{contractName}", "Service")
         {
             ContractABI = contractABI;
             CQSNamespace = cqsNamespace;

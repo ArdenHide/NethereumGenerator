@@ -64,8 +64,8 @@ namespace Nethereum.Generators
             var generated = new List<GeneratedFile>();
             generated.Add(GenerateAllMessages());
             generated.AddRange(GenerateAllStructs());
-            generated.Add(GenerateServiceInterface(singleMessagesFile:true));
             generated.Add(GenerateService(singleMessagesFile:true));
+            generated.Add(GenerateServiceInterface(singleMessagesFile:true));
             generated.Add(GenerateDeployService(singleMessagesFile:true));
             return generated.ToArray();
         }
@@ -73,7 +73,7 @@ namespace Nethereum.Generators
         public GeneratedFile GenerateAllMessages()
         {
             var cqsFullNamespace = GetFullNamespace(CQSNamespace);
-            var cqsFullPath = GetFullPath(CQSNamespace); ;
+            var cqsFullPath = GetFullPath(CQSNamespace);
 
             var generators = new List<IClassGenerator>();
             generators.Add(GetCQSMessageDeploymentGenerator());
@@ -93,8 +93,8 @@ namespace Nethereum.Generators
             generated.AddRange(GenerateAllEventDTOs());
             generated.AddRange(GenerateAllErrorDTOs());
             generated.AddRange(GenerateAllFunctionDTOs());
-            generated.Add(GenerateServiceInterface());
             generated.Add(GenerateService());
+            generated.Add(GenerateServiceInterface());
             generated.Add(GenerateDeployService());
             return generated.ToArray();
         }
