@@ -15,7 +15,7 @@ namespace Nethereum.Generators.ServiceInterface.CSharp
         public override string GenerateClass()
         {
             return
-                $@"{SpaceUtils.OneTab}public interface I{Model.GetTypeName()}
+                $@"{SpaceUtils.OneTab}public interface {Model.GetTypeName()}
 {SpaceUtils.OneTab}{{
 {_functionServiceMethodCSharpTemplate.GenerateMethods()}
 {SpaceUtils.OneTab}}}";

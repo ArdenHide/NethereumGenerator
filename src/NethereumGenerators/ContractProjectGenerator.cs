@@ -64,8 +64,8 @@ namespace Nethereum.Generators
             var generated = new List<GeneratedFile>();
             generated.Add(GenerateAllMessages());
             generated.AddRange(GenerateAllStructs());
-            generated.Add(GenerateService(singleMessagesFile:true));
             generated.Add(GenerateServiceInterface(singleMessagesFile:true));
+            generated.Add(GenerateService(singleMessagesFile:true));
             generated.Add(GenerateDeployService(singleMessagesFile:true));
             return generated.ToArray();
         }
@@ -93,8 +93,8 @@ namespace Nethereum.Generators
             generated.AddRange(GenerateAllEventDTOs());
             generated.AddRange(GenerateAllErrorDTOs());
             generated.AddRange(GenerateAllFunctionDTOs());
-            generated.Add(GenerateService());
             generated.Add(GenerateServiceInterface());
+            generated.Add(GenerateService());
             generated.Add(GenerateDeployService());
             return generated.ToArray();
         }
