@@ -5,7 +5,7 @@ namespace Nethereum.Generators.Service
 {
     public class ServiceCSharpTemplate : ClassTemplateBase<ServiceModel>
     {
-        private readonly FunctionServiceMethodCSharpTemplate _functionServiceMethodCSharpTemplate;
+        private FunctionServiceMethodCSharpTemplate _functionServiceMethodCSharpTemplate;
         public ServiceCSharpTemplate(ServiceModel model) : base(model)
         {
             _functionServiceMethodCSharpTemplate = new FunctionServiceMethodCSharpTemplate(model);
@@ -35,37 +35,20 @@ namespace Nethereum.Generators.Service
 {SpaceUtils.NoTabs}
 {SpaceUtils.TwoTabs}public void Initialize(IWeb3 web3, string contractAddress)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}Web3 = web3.ThrowIfNull();
-{SpaceUtils.ThreeTabs}ContractHandler = web3.Eth.GetContractHandler(contractAddress).ThrowIfNull();
+{SpaceUtils.ThreeTabs}Web3 = web3;
+{SpaceUtils.ThreeTabs}ContractHandler = web3.Eth.GetContractHandler(contractAddress);
 {SpaceUtils.TwoTabs}}}
 {SpaceUtils.NoTabs}
+{SpaceUtils.TwoTabs}private void EnsureInitialized()
+{SpaceUtils.TwoTabs}{{
+{SpaceUtils.ThreeTabs}if (Web3 == null || ContractHandler == null)
+{SpaceUtils.ThreeTabs}{{
+{SpaceUtils.FourTabs}throw new InvalidOperationException(""The service has not been initialized. Please call the Initialize method with a valid IWeb3 instance and contract address."");
+{SpaceUtils.ThreeTabs}}}
+{SpaceUtils.TwoTabs}}}
 {SpaceUtils.NoTabs}
 {_functionServiceMethodCSharpTemplate.GenerateMethods()}
-{SpaceUtils.OneTab}}}
-{GenerateThrowIfNullMethod()}";
-        }
-
-        private string GenerateThrowIfNullMethod()
-        {
-            return
-                $@"internal static class ObjectExtensions
-{SpaceUtils.NoTabs}{{
-{SpaceUtils.OneTab}[MethodImpl(MethodImplOptions.AggressiveInlining)]
-{SpaceUtils.OneTab}internal static T ThrowIfNull<T>(
-{SpaceUtils.OneTab}{SpaceUtils.TwoTabs}this T value,
-{SpaceUtils.OneTab}{SpaceUtils.TwoTabs}[CallerMemberName] string memberName = """",
-{SpaceUtils.OneTab}{SpaceUtils.TwoTabs}[CallerFilePath] string filePath = """",
-{SpaceUtils.OneTab}{SpaceUtils.TwoTabs}[CallerLineNumber] int lineNumber = 0
-{SpaceUtils.OneTab})
-{SpaceUtils.OneTab}where T : class
-{SpaceUtils.OneTab}{{
-{SpaceUtils.TwoTabs}if (value == null)
-{SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}throw new ArgumentNullException($""Value is null. Caller: {{memberName}}, File: {{filePath}}, Line: {{lineNumber}}"");
-{SpaceUtils.TwoTabs}}}
-{SpaceUtils.TwoTabs}return value;
-{SpaceUtils.OneTab}}}
-{SpaceUtils.NoTabs}}}";
+{SpaceUtils.OneTab}}}";
         }
     }
 }
