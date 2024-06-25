@@ -25,8 +25,12 @@ namespace Nethereum.Generators.ServiceInterface.CSharp
         public string GenerateMethods()
         {
             var functions = _model.ContractABI.Functions;
-            return string.Join(GenerateLineBreak(), functions.Select(GenerateMethod));
+            var methods = string.Join(GenerateLineBreak(), functions.Select(GenerateMethod));
+            methods += $"{GenerateLineBreak()}{GenerateInitializeMethod()}";
+            return methods;
         }
+
+        private string GenerateInitializeMethod() => $@"{SpaceUtils.TwoTabs}public void Initialize(IWeb3 web3, string contractAddress);";
 
         public string GenerateMethod(FunctionABI functionABI)
         {
