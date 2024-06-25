@@ -15,7 +15,7 @@ namespace Nethereum.Generators.Service
         public override string GenerateClass()
         {
             return
-                $@"{SpaceUtils.OneTab}public partial class {Model.GetTypeName()}
+                $@"{SpaceUtils.OneTab}public partial class {Model.GetTypeName()} : I{Model.GetTypeName()}
 {SpaceUtils.OneTab}{{
 {SpaceUtils.TwoTabs}protected virtual IWeb3 Web3 {{ get; private set; }}
 {SpaceUtils.NoTabs}

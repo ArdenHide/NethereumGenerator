@@ -3,6 +3,7 @@ using Nethereum.Generators.CQS;
 using Nethereum.Generators.DTOs;
 using Nethereum.Generators.Model;
 using Nethereum.Generators.Service;
+using Nethereum.Generators.ServiceInterface;
 using Nethereum.Generators.Unity;
 using NethereumGenerators.Deploy;
 using System;
@@ -63,6 +64,7 @@ namespace Nethereum.Generators
             var generated = new List<GeneratedFile>();
             generated.Add(GenerateAllMessages());
             generated.AddRange(GenerateAllStructs());
+            generated.Add(GenerateServiceInterface(singleMessagesFile:true));
             generated.Add(GenerateService(singleMessagesFile:true));
             generated.Add(GenerateDeployService(singleMessagesFile:true));
             return generated.ToArray();
@@ -91,6 +93,7 @@ namespace Nethereum.Generators
             generated.AddRange(GenerateAllEventDTOs());
             generated.AddRange(GenerateAllErrorDTOs());
             generated.AddRange(GenerateAllFunctionDTOs());
+            generated.Add(GenerateServiceInterface());
             generated.Add(GenerateService());
             generated.Add(GenerateDeployService());
             return generated.ToArray();
@@ -107,6 +110,20 @@ namespace Nethereum.Generators
             var serviceFullNamespace = GetFullNamespace(ServiceNamespace);
             var serviceFullPath = GetFullPath(ServiceNamespace);
             var serviceGenerator = new DeployGenerator(ContractABI, ContractName, ByteCode, serviceFullNamespace, cqsFullNamespace, dtoFullNamespace, CodeGenLanguage);
+            return serviceGenerator.GenerateFileContent(serviceFullPath);
+        }
+
+        public GeneratedFile GenerateServiceInterface(bool singleMessagesFile = false)
+        {
+            var dtoFullNamespace = GetFullNamespace(DTONamespace);
+            var cqsFullNamespace = GetFullNamespace(CQSNamespace);
+
+            dtoFullNamespace = singleMessagesFile ? string.Empty : FullyQualifyNamespaceFromImport(dtoFullNamespace);
+            cqsFullNamespace = FullyQualifyNamespaceFromImport(cqsFullNamespace);
+
+            var serviceFullNamespace = GetFullNamespace(ServiceNamespace);
+            var serviceFullPath = GetFullPath(ServiceNamespace);
+            var serviceGenerator = new ServiceInterfaceGenerator(ContractABI, ContractName, ByteCode, serviceFullNamespace, cqsFullNamespace, dtoFullNamespace, CodeGenLanguage);
             return serviceGenerator.GenerateFileContent(serviceFullPath);
         }
 
