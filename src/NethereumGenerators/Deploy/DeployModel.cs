@@ -43,7 +43,9 @@ namespace NethereumGenerators.Deploy
                 "Nethereum.Contracts.CQS",
                 "Nethereum.Contracts.ContractHandlers",
                 "Nethereum.Contracts",
-                "System.Threading" });
+                "System.Threading",
+                "NethereumGenerators.Interfaces"
+            });
         }
     }
 }

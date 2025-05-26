@@ -17,34 +17,19 @@ namespace Nethereum.Generators.Service
             return
                 $@"{SpaceUtils.OneTab}public partial class {Model.GetTypeName()} : I{Model.GetTypeName()}
 {SpaceUtils.OneTab}{{
-{SpaceUtils.TwoTabs}protected virtual IWeb3 Web3 {{ get; private set; }}
+{SpaceUtils.TwoTabs}public IChainProvider ChainProvider {{ get; }}
 {SpaceUtils.NoTabs}
-{SpaceUtils.TwoTabs}public virtual ContractHandler ContractHandler {{ get; private set; }}
-{SpaceUtils.NoTabs}
-{SpaceUtils.TwoTabs}public {Model.GetTypeName()}() {{ }}
-{SpaceUtils.NoTabs}
-{SpaceUtils.TwoTabs}public {Model.GetTypeName()}(Web3 web3, string contractAddress)
+{SpaceUtils.TwoTabs}public {Model.GetTypeName()}(IChainProvider chainProvider)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}Initialize(web3, contractAddress);
+{SpaceUtils.ThreeTabs}ChainProvider = chainProvider;
 {SpaceUtils.TwoTabs}}}
 {SpaceUtils.NoTabs}
-{SpaceUtils.TwoTabs}public {Model.GetTypeName()}(IWeb3 web3, string contractAddress)
+{SpaceUtils.TwoTabs}private ContractHandler InitializeContractHandler(long chainId, Enum contractType)
 {SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}Initialize(web3, contractAddress);
-{SpaceUtils.TwoTabs}}}
-{SpaceUtils.NoTabs}
-{SpaceUtils.TwoTabs}public void Initialize(IWeb3 web3, string contractAddress)
-{SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}Web3 = web3;
-{SpaceUtils.ThreeTabs}ContractHandler = web3.Eth.GetContractHandler(contractAddress);
-{SpaceUtils.TwoTabs}}}
-{SpaceUtils.NoTabs}
-{SpaceUtils.TwoTabs}private void EnsureInitialized()
-{SpaceUtils.TwoTabs}{{
-{SpaceUtils.ThreeTabs}if (Web3 == null || ContractHandler == null)
-{SpaceUtils.ThreeTabs}{{
-{SpaceUtils.FourTabs}throw new InvalidOperationException(""The service has not been initialized. Please call the Initialize method with a valid IWeb3 instance and contract address."");
-{SpaceUtils.ThreeTabs}}}
+{SpaceUtils.ThreeTabs}var contractAddress = ChainProvider.ContractAddress(chainId, contractType);
+{SpaceUtils.ThreeTabs}var web3 = ChainProvider.Web3(chainId);
+{SpaceUtils.ThreeTabs}var contractHandler = web3.Eth.GetContractHandler(contractAddress);
+{SpaceUtils.ThreeTabs}return contractHandler;
 {SpaceUtils.TwoTabs}}}
 {SpaceUtils.NoTabs}
 {_functionServiceMethodCSharpTemplate.GenerateMethods()}
