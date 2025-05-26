@@ -17,6 +17,13 @@ namespace NethereumGenerators.Deploy.CSharp
             return
                 $@"{SpaceUtils.OneTab}public partial class {Model.GetTypeName()}
 {SpaceUtils.OneTab}{{
+{SpaceUtils.TwoTabs}public IChainProvider ChainProvider {{ get; }}
+{SpaceUtils.NoTabs}
+{SpaceUtils.TwoTabs}public {Model.GetTypeName()}(IChainProvider chainProvider)
+{SpaceUtils.TwoTabs}{{
+{SpaceUtils.ThreeTabs}ChainProvider = chainProvider;
+{SpaceUtils.TwoTabs}}}
+{SpaceUtils.NoTabs}
 {_deploymentServiceMethodsCSharpTemplate.GenerateMethods()}
 {SpaceUtils.OneTab}}}";
         }

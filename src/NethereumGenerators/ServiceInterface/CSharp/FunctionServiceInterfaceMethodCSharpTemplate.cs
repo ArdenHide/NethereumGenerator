@@ -26,11 +26,8 @@ namespace Nethereum.Generators.ServiceInterface.CSharp
         {
             var functions = _model.ContractABI.Functions;
             var methods = string.Join(GenerateLineBreak(), functions.Select(GenerateMethod));
-            methods += $"{GenerateLineBreak()}{GenerateInitializeMethod()}";
             return methods;
         }
-
-        private string GenerateInitializeMethod() => $@"{SpaceUtils.TwoTabs}public void Initialize(IWeb3 web3, string contractAddress);";
 
         public string GenerateMethod(FunctionABI functionABI)
         {
@@ -47,13 +44,13 @@ namespace Nethereum.Generators.ServiceInterface.CSharp
                 var functionOutputDTOType = functionOutputDTOModel.GetTypeName();
 
                 var returnWithInputParam =
-$@"{SpaceUtils.TwoTabs}public Task<{functionOutputDTOType}> {functionNameUpper}QueryAsync({messageType} {messageVariableName}, BlockParameter blockParameter = null);";
+$@"{SpaceUtils.TwoTabs}Task<{functionOutputDTOType}> {functionNameUpper}QueryAsync(long chainId, Enum contractType, {messageType} {messageVariableName}, BlockParameter blockParameter = null);";
 
                 var returnWithoutInputParam =
-$@"{SpaceUtils.TwoTabs}public Task<{functionOutputDTOType}> {functionNameUpper}QueryAsync(BlockParameter blockParameter = null);";
+$@"{SpaceUtils.TwoTabs}Task<{functionOutputDTOType}> {functionNameUpper}QueryAsync(long chainId, Enum contractType, BlockParameter blockParameter = null);";
 
                 var returnWithSimpleParams =
-$@"{SpaceUtils.TwoTabs}public Task<{functionOutputDTOType}> {functionNameUpper}QueryAsync({_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)}, BlockParameter blockParameter = null);";
+$@"{SpaceUtils.TwoTabs}Task<{functionOutputDTOType}> {functionNameUpper}QueryAsync(long chainId, Enum contractType, {_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)}, BlockParameter blockParameter = null);";
 
                 if (functionABIModel.HasNoInputParameters())
                 {
@@ -72,13 +69,13 @@ $@"{SpaceUtils.TwoTabs}public Task<{functionOutputDTOType}> {functionNameUpper}Q
                     var type = functionABIModel.GetSingleOutputReturnType();
 
                     var returnWithInputParam =
-                        $@"{SpaceUtils.TwoTabs}public Task<{type}> {functionNameUpper}QueryAsync({messageType} {messageVariableName}, BlockParameter blockParameter = null);";
+                        $@"{SpaceUtils.TwoTabs}Task<{type}> {functionNameUpper}QueryAsync(long chainId, Enum contractType, {messageType} {messageVariableName}, BlockParameter blockParameter = null);";
 
                     var returnWithoutInputParam =
-                        $@"{SpaceUtils.TwoTabs}public Task<{type}> {functionNameUpper}QueryAsync(BlockParameter blockParameter = null);";
+                        $@"{SpaceUtils.TwoTabs}Task<{type}> {functionNameUpper}QueryAsync(long chainId, Enum contractType, BlockParameter blockParameter = null);";
 
                     var returnWithSimpleParams =
-                        $@"{SpaceUtils.TwoTabs}public Task<{type}> {functionNameUpper}QueryAsync({_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)}, BlockParameter blockParameter = null);";
+                        $@"{SpaceUtils.TwoTabs}Task<{type}> {functionNameUpper}QueryAsync(long chainId, Enum contractType, {_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)}, BlockParameter blockParameter = null);";
 
                     if (functionABIModel.HasNoInputParameters())
                     {
@@ -94,22 +91,22 @@ $@"{SpaceUtils.TwoTabs}public Task<{functionOutputDTOType}> {functionNameUpper}Q
             if (functionABIModel.IsTransaction())
             {
                 var transactionRequestWithInput =
-                    $@"{SpaceUtils.TwoTabs}public Task<string> {functionNameUpper}RequestAsync({messageType} {messageVariableName});";
+                    $@"{SpaceUtils.TwoTabs}Task<string> {functionNameUpper}RequestAsync(long chainId, Enum contractType, {messageType} {messageVariableName});";
 
                 var transactionRequestWithoutInput =
-                    $@"{SpaceUtils.TwoTabs}public Task<string> {functionNameUpper}RequestAsync();";
+                    $@"{SpaceUtils.TwoTabs}Task<string> {functionNameUpper}RequestAsync(long chainId, Enum contractType);";
 
                 var transactionRequestWithSimpleParams =
-                    $@"{SpaceUtils.TwoTabs}public Task<string> {functionNameUpper}RequestAsync({_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)});";
+                    $@"{SpaceUtils.TwoTabs}Task<string> {functionNameUpper}RequestAsync(long chainId, Enum contractType, {_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)});";
 
                 var transactionRequestAndReceiptWithInput =
-                    $@"{SpaceUtils.TwoTabs}public Task<TransactionReceipt> {functionNameUpper}RequestAndWaitForReceiptAsync({messageType} {messageVariableName}, CancellationTokenSource cancellationToken = null);";
+                    $@"{SpaceUtils.TwoTabs}Task<TransactionReceipt> {functionNameUpper}RequestAndWaitForReceiptAsync(long chainId, Enum contractType, {messageType} {messageVariableName}, CancellationTokenSource cancellationToken = null);";
 
                 var transactionRequestAndReceiptWithoutInput =
-                    $@"{SpaceUtils.TwoTabs}public Task<TransactionReceipt> {functionNameUpper}RequestAndWaitForReceiptAsync(CancellationTokenSource cancellationToken = null);";
+                    $@"{SpaceUtils.TwoTabs}Task<TransactionReceipt> {functionNameUpper}RequestAndWaitForReceiptAsync(long chainId, Enum contractType, CancellationTokenSource cancellationToken = null);";
 
                 var transactionRequestAndReceiptWithSimpleParams =
-                    $@"{SpaceUtils.TwoTabs}public Task<TransactionReceipt> {functionNameUpper}RequestAndWaitForReceiptAsync({_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)}, CancellationTokenSource cancellationToken = null);";
+                    $@"{SpaceUtils.TwoTabs}Task<TransactionReceipt> {functionNameUpper}RequestAndWaitForReceiptAsync(long chainId, Enum contractType, {_parameterAbiFunctionDtocSharpTemplate.GenerateAllFunctionParameters(functionABIModel.FunctionABI.InputParameters)}, CancellationTokenSource cancellationToken = null);";
 
                 if (functionABIModel.HasNoInputParameters())
                 {
