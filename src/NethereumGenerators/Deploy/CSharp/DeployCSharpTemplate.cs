@@ -15,11 +15,12 @@ namespace NethereumGenerators.Deploy.CSharp
         public override string GenerateClass()
         {
             return
-                $@"{SpaceUtils.OneTab}public partial class {Model.GetTypeName()}
+                $@"{SpaceUtils.OneTab}public partial class {Model.GetTypeName()}<TContractType>
+{SpaceUtils.TwoTabs}where TContractType : Enum
 {SpaceUtils.OneTab}{{
-{SpaceUtils.TwoTabs}public IChainProvider ChainProvider {{ get; }}
+{SpaceUtils.TwoTabs}public IChainProvider<TContractType> ChainProvider {{ get; }}
 {SpaceUtils.NoTabs}
-{SpaceUtils.TwoTabs}public {Model.GetTypeName()}(IChainProvider chainProvider)
+{SpaceUtils.TwoTabs}public {Model.GetTypeName()}(IChainProvider<TContractType> chainProvider)
 {SpaceUtils.TwoTabs}{{
 {SpaceUtils.ThreeTabs}ChainProvider = chainProvider;
 {SpaceUtils.TwoTabs}}}
